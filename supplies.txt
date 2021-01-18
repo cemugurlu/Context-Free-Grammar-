@@ -1,0 +1,3 @@
+tanks
+rifles
+rations
