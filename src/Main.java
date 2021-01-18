@@ -8,8 +8,8 @@ import java.util.Scanner;
  * @author Cem Ugurlu
  * @author Uras Felamur
  * @date 17.01.2021
- * @brief Code that decrypts the given .txt file and with the implementation of CFG machine
- * it executes a new .txt file with the correct context free grammar.
+ * @brief Code that decrypts the given .txt file, and with the implementation of CFG machine'
+ * it executes a new .txt file with the correct context free grammar defined by the authors.
  */
 public class Main {
     
@@ -24,14 +24,10 @@ public class Main {
         ArrayList<String> decryptedList = CryptionManager.getDecryptedList(sentenceList);
         
         System.out.println("  *  * * * DECRYPTION HAS BEEN DONE * * *  *  ");
-        //Created the intermediate file to send it CFG
+        //Created the intermediate file in order to send it to CFG
         createIntermediateFile(decryptedList);
         
         System.out.println(decryptedList);
-        
-        /*for (String decryptedSentence : decryptedList)
-            System.out.println(CFG.nonTerminalA(decryptedSentence));*/
-        
         
         for (String sentence : decryptedList) {
             System.out.println(cfgControll(sentence));
@@ -44,6 +40,10 @@ public class Main {
         
     }
     
+    /** Method that creates the intermediate.txt file
+     *
+     * @param decryptedList
+     */
     private static void createIntermediateFile(ArrayList<String> decryptedList) {
         try (PrintWriter writer = new PrintWriter("intermediateFile.txt", StandardCharsets.UTF_8)) {
             
@@ -56,6 +56,10 @@ public class Main {
         }
     }
     
+    /** Method that creates the final.txt file
+     *
+     * @param decryptedList
+     */
     private static void createFinalTxtFile(ArrayList<String> decryptedList) {
         try (PrintWriter writer = new PrintWriter("final.txt", StandardCharsets.UTF_8)) {
             
@@ -68,9 +72,13 @@ public class Main {
         }
     }
     
-    
+    /**
+     * @param sentenceList List of sentences
+     * @param wordList List of words
+     */
     private static void generateListsFromFile(ArrayList<String> sentenceList, ArrayList<String> wordList) {
         try {
+            // got the .txt with File
             File inputFile = new File("encrypted.txt");
             Scanner scanner = new Scanner(inputFile);
             while (scanner.hasNextLine()) {
@@ -89,6 +97,12 @@ public class Main {
         }
     }
     
+    /** Method that checks the given sentence is in the language or not
+     *
+     * @param sentence Sentences in the intermediate file
+     * @return boolean to check the conditions
+     * @throws IOException
+     */
     private static boolean cfgControll(String sentence) throws IOException {
         boolean eventBoolean = false;
         boolean locationBoolean = false;

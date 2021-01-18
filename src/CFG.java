@@ -2,7 +2,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+/**
+ *  CFG class with method corresponding to the cfg
+ */
 public class CFG {
+    /** Non-Terminal and Terminal methods each works with their corresponding
+     * .txt files
+     *
+     */
     public static boolean nonTerminalA(String input) throws IOException {
         return doesFileInPathContainsWordFromInput("A.txt", input);
     }
@@ -82,8 +89,13 @@ public class CFG {
     }
     
     
-    
-    
+    /** Method that checks the word from input whether exists or not
+     *
+     * @param path
+     * @param input
+     * @return
+     * @throws IOException
+     */
     private static boolean doesFileInPathContainsWordFromInput(String path, String input) throws IOException {
         return Files.lines(Paths.get(path)).anyMatch(word -> {
             for (String inputWord : input.split(" ")) {

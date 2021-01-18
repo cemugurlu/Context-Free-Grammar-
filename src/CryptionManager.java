@@ -2,8 +2,15 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Cryption Manager class with the
+ */
 public class CryptionManager {
-    
+    /**
+     * Method that creates a list that includes the decrypted strings
+     * @param sentenceList List of sentences
+     * @return An array list filled with decrypted sentences
+     */
     public static ArrayList<String> getDecryptedList(ArrayList<String> sentenceList) {
         ArrayList<String> decryptedList = new ArrayList<>();
         for (String sentence : sentenceList) {
@@ -23,6 +30,11 @@ public class CryptionManager {
         return decryptedList;
     }
     
+    /** All the decryption methods with using regex library in Java
+     *
+     * @param input String input
+     * @return decrypted Strings
+     */
     private static String decryptPMTime(String input) {
         Pattern pattern = Pattern.compile("BC", Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(input);
