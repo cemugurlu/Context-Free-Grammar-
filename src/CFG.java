@@ -7,6 +7,10 @@ public class CFG {
         return doesFileInPathContainsWordFromInput("A.txt", input);
     }
     
+    public static boolean nonterminalZ(String input) throws IOException {
+        return doesFileInPathContainsWordFromInput("Z.txt", input);
+    
+    }
     public static boolean actual(String input) throws IOException {
         return doesFileInPathContainsWordFromInput("actual.txt", input);
     }
@@ -55,6 +59,8 @@ public class CFG {
         return time || supplies;
     }
     
+    
+    
     public static boolean terminalX(boolean pluralVerb, boolean singularVerb) {
         return pluralVerb || singularVerb;
     }
@@ -63,8 +69,8 @@ public class CFG {
         return actual || code;
     }
     
-    public static boolean terminalK(boolean terminalX, boolean terminalT, boolean terminalY) throws IOException {
-        return terminalX && terminalT || terminalX && terminalY || terminalX;
+    public static boolean terminalK(boolean terminalX, boolean terminalT, boolean terminalY, boolean nonterminalZ) throws IOException {
+        return terminalX && terminalT || terminalX && nonterminalZ && terminalY || terminalX;
     }
     
     public static boolean terminalC(boolean nonTerminalA, boolean terminalB) throws  IOException {
@@ -74,6 +80,8 @@ public class CFG {
     public static boolean terminalS(boolean terminalC, boolean terminalK) throws IOException {
         return terminalC && terminalK;
     }
+    
+    
     
     
     private static boolean doesFileInPathContainsWordFromInput(String path, String input) throws IOException {

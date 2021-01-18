@@ -99,6 +99,7 @@ public class Main {
         boolean pluralVerbBoolean = false;
         boolean singularVerbBoolean = false;
         boolean nonTerminalABoolean = false;
+        boolean nonTerminalZBoolean = false;
         
         
         eventBoolean = CFG.event(sentence);
@@ -110,7 +111,7 @@ public class Main {
         pluralVerbBoolean = CFG.pluralVerb(sentence);
         singularVerbBoolean = CFG.singularVerb(sentence);
         nonTerminalABoolean = CFG.nonTerminalA(sentence);
-        
+        nonTerminalZBoolean = CFG.nonterminalZ(sentence);
         
         
         boolean Y = CFG.terminalY(locationBoolean, eventBoolean);
@@ -118,8 +119,9 @@ public class Main {
         boolean X = CFG.terminalX(pluralVerbBoolean, singularVerbBoolean);
         boolean B = CFG.terminalB(actualBoolean, codeBoolean);
         boolean C = CFG.terminalC(nonTerminalABoolean, B);
-        boolean K = CFG.terminalK(X, T, Y);
+        boolean K = CFG.terminalK(X, T, Y, nonTerminalZBoolean);
         boolean S = CFG.terminalS(C, K);
+        
         
         return S;
         
